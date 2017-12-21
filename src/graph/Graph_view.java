@@ -45,14 +45,14 @@ public class Graph_view extends Frame implements ActionListener, WindowListener{
 		data.addValue(320, "China", "2007");
 	    if(a == 0) {
 		   JFreeChart chart = 
-				 ChartFactory.createLineChart("Import Volume",
-			                                   "Year",
-		      	                               "Ton",
-				                               data,
-				                               PlotOrientation.VERTICAL,
-				                               true,
-				                               false,
-				                               false);
+		     	 ChartFactory.createLineChart("Import Volume",
+		                                      "Year",
+		     	                              "Ton",
+		                                      data,
+		                                      PlotOrientation.VERTICAL,
+		                                      true,
+		   	                                  false,
+		   	                                  false);
 	       ChartPanel cpanel = new ChartPanel(chart);
 		   add(cpanel, BorderLayout.CENTER);
 	    }else if(a == 1) {
@@ -61,7 +61,7 @@ public class Graph_view extends Frame implements ActionListener, WindowListener{
 		                                     "Year",
 	                                         "Ton",
 		                                     data,
-			                                 PlotOrientation.VERTICAL,
+		                                     PlotOrientation.VERTICAL,
 	                                         true,
      	                                     false,
 	                                         false);
@@ -115,17 +115,14 @@ public class Graph_view extends Frame implements ActionListener, WindowListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-        int a;
 		if(e.getSource() == button1) {
 			dispose();
-			a = 0;
-			Graph_view graph = new Graph_view(a);
+			Graph_view graph = new Graph_view(0);
 			graph.setBounds(5,5,700,550);
 		  	graph.setVisible(true);
 		}else if(e.getSource() == button2) {
 			dispose();
-			a = 1;
-			Graph_view graph = new Graph_view(a);
+			Graph_view graph = new Graph_view(1);
 			graph.setBounds(5,5,700,550);
 			graph.setVisible(true);
 		}
