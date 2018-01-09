@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.sound.sampled.Line;
 
@@ -18,6 +20,8 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+
+
 
 public class Graph_view extends Frame implements ActionListener, WindowListener{
     
@@ -35,7 +39,7 @@ public class Graph_view extends Frame implements ActionListener, WindowListener{
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
         DefaultCategoryDataset data = new DefaultCategoryDataset();
-		
+		/*
 		data.addValue(300, "USA", "2005");
 		data.addValue(500, "USA", "2006");
 		data.addValue(120, "USA", "2007");
@@ -43,6 +47,26 @@ public class Graph_view extends Frame implements ActionListener, WindowListener{
 		data.addValue(200, "China", "2005");
 		data.addValue(400, "China", "2006");
 		data.addValue(320, "China", "2007");
+		*/
+		int ton;
+		String name, year;
+		ResultSet rs;
+		MySQL mysql = new MySQL();
+		rs = mysql.selectAll();
+		
+		try {
+			while(rs.next()){
+			    name = rs.getString("name");
+			    year = rs.getString("year");
+			    ton = rs.getInt("ton");
+			    data.addValue(ton,  name, year);
+			}  //try catch‚ÅˆÍ‚Þ
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
 	    if(a == 0) {
 		   JFreeChart chart = 
 		     	 ChartFactory.createLineChart("Import Volume",
